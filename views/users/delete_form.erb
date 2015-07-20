@@ -1,13 +1,11 @@
-post "/users/:id"
-
-<ul>
-<% @array_of_users.each do |i| %>
-<li> <%= i.id%>. <%= i.email %> </li>
-<% end %>
-</ul>
-Enter the User ID of the account you would like to delete:
-
-<form action="/users/:id" method="post">
-  <input type="number" name="id" placeholder="User ID">
-  <input type="submit" value="Delete User">
+Select User to be deleted:
+<form method="post">
+  <select name="user_id">
+    <option selected></option>
+    <% users = User.all %>
+    <% users.each do |item| %>
+      <option value="<%= item.id %>"><%= item.email %></option>
+    <% end %>
+  </select>
+<p><input type="submit" value="delete user"></p>
 </form>

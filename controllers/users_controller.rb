@@ -20,9 +20,8 @@ get "/users/delete_form" do
 end
 
 post "/users/:id" do # Delete a specific User
+  user = User.find(params["user_id"])
   binding.pry
-  user = User.find(params[:id])
-  @user_email = @user.email
   user.destroy
   erb :"users/deleted"
 end
