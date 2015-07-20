@@ -7,6 +7,9 @@ require "sinatra/reloader"
 require "active_record"
 require "bcrypt"
 
+gem 'sqlite3', groups: => [:development, :test]
+gem 'pg', groups: => [:production]
+
 configure :development do
   require "sqlite3"
   ActiveRecord::Base.establish_connection(adapter: 'sqlite3', database: 'stories.db')
