@@ -1,4 +1,4 @@
-Select User to be deleted:
+<!-- Select User to be deleted:
 <form method="post">
   <select name="user_id">
     <option selected></option>
@@ -8,4 +8,14 @@ Select User to be deleted:
     <% end %>
   </select>
 <p><input type="submit" value="delete user"></p>
+</form> -->
+<form action="/users/user_id" method="post">
+  <select name="user_id">
+    <option selected></option>
+    <% users = User.all %>
+    <% users.each do |item| %>
+      <option value="<%= item.id %>"><%= item.email %></option>
+    <% end %>
+  </select>
+  <p><input type="submit" value="delete user"></p>
 </form>
