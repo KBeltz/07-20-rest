@@ -5,12 +5,12 @@ end
 post "/users/create" do
   email = params["email"]
   password = BCrypt::Password.create(params["password"])
-  User.create({email: email, password: password})
-  redirect "/users/#{user.id}" 
+  user = User.create({email: email, password: password})
+  redirect "/users/#{user.id}"
 end
 
 get "/users/:id" do
-  @user = User.find(:id)
+  @user = User.find(params[:id])
   erb :"users/show_user"
 end
 
