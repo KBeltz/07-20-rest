@@ -7,7 +7,7 @@ post "/users/:id"
 </ul>
 Enter the User ID of the account you would like to delete:
 
-<form action="/users/params["id"]" method="post">
+<form action="/users/:id" method="post">
   <input type="number" name="id" placeholder="User ID">
   <input type="submit" value="Delete User">
 </form>

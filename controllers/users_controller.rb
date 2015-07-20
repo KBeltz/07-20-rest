@@ -14,7 +14,13 @@ get "/users" do # Show all Users
   erb :"/users/all_users"
 end
 
-post "/users/delete_form" do # Delete a specific User
+get "/users/delete_form" do
+  @array_of_users = User.all
+  erb :"/users/delete_form"
+end
+
+post "/users/:id" do # Delete a specific User
+  binding.pry
   user = User.find(params[:id])
   @user_email = @user.email
   user.destroy
