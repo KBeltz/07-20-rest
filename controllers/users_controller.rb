@@ -19,24 +19,25 @@ get "/users/delete_form" do
   erb :"/users/delete_form"
 end
 
-get "/users/:id/edit" do
-  @user = User.find(params[:id])
+get "/users/:id/edit" do # User edit form
+  @user = User.find(params["id"])
   erb :"/users/edit_form"
 end
 
-put "/users/:id" do
-  user = User.find(params["id"])
+put "/users/:id" do #Update a specific User
+  user = User.find(params[:id])
   user.update_attributes(email: params["email"])
   user.save
+  erb :"/users/success"
 end
 
 post "/users/:id" do # Delete a specific User
   user = User.find(params["user_id"])
   user.destroy
-  erb :"users/deleted"
+  erb :"/users/deleted"
 end
 
 get "/users/:id" do # Find a specific User
   @user = User.find(params[:id])
-  erb :"users/show_user"
+  erb :"/users/show_user"
 end
