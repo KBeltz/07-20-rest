@@ -17,5 +17,5 @@ end
 
 
 get "/users" do # Show all users
-  @array_of_users = User.all?
+  @array_of_users = User.all
 end
