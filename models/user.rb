@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_many :stories
   validates :email, presence: true
 
   unless ActiveRecord::Base.connection.table_exists?(:users)

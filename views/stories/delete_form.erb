@@ -1,0 +1,21 @@
+<!-- Select User to be deleted:
+<form method="post">
+  <select name="user_id">
+    <option selected></option>
+    <% users = User.all %>
+    <% users.each do |item| %>
+      <option value="<%= item.id %>"><%= item.email %></option>
+    <% end %>
+  </select>
+<p><input type="submit" value="delete user"></p>
+</form> -->
+<form action="/stories/story_id" method="post">
+  <select name="story_id">
+    <option selected></option>
+    <% stories = Story.all %>
+    <% stories.each do |item| %>
+      <option value="<%= item.id %>"><%= item.title %></option>
+    <% end %>
+  </select>
+  <p><input type="submit" value="delete story"></p>
+</form>

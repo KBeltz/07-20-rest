@@ -31,10 +31,8 @@ ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT)
 
 # Models
 require_relative "models/user.rb"
+require_relative "models/story.rb"
 
 #Controllers
 require_relative "controllers/users_controller.rb"
-
-# binding.pry
-
-#Test Test
+require_relative "controllers/stories_controller.rb"

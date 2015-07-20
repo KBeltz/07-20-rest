@@ -1,0 +1,8 @@
+Edit User #<%= @user.id %> email address:
+<br>
+<form action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="id" value="<%= @user.id %>">
+  <input type="hidden" name="_method" value="put">
+  <input type="text" name="email" value="<%= @user.email %>">
+  <input type="submit" value="edit user">
+</form>
