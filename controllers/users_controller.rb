@@ -15,9 +15,19 @@ get "/users" do # Show all Users
 end
 
 get "/users/delete_form" do
-
   @array_of_users = User.all
   erb :"/users/delete_form"
+end
+
+get "/users/:id/edit" do
+  @user = User.find(params[:id])
+  erb :"/users/edit_form"
+end
+
+put "/users/:id" do
+  user = User.find(params["id"])
+  user.update_attributes(email: params["email"])
+  user.save
 end
 
 post "/users/:id" do # Delete a specific User
