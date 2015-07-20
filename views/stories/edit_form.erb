@@ -1,8 +1,8 @@
-Edit User #<%= @user.id %> email address:
+Edit User #<%= @story.id %> email address:
 <br>
-<form action="/users/<%= @user.id %>" method="post">
-  <input type="hidden" name="id" value="<%= @user.id %>">
+<form action="/stories/<%= @story.id %>" method="post">
+  <input type="hidden" name="id" value="<%= @story.id %>">
   <input type="hidden" name="_method" value="put">
-  <input type="text" name="email" value="<%= @user.email %>">
-  <input type="submit" value="edit user">
+  <input type="text" name="title" value="<%= @story.title %>">
+  <input type="submit" value="edit story">
 </form>

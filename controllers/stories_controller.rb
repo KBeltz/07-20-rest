@@ -3,8 +3,9 @@ get "/stories/new" do # Bring up form to create Story
 end
 
 post "/stories/create" do # Create a Story
+  user_id = User.where(:email => params["user_email"])[0].id
   title = params["title"]
-  title = Title.create(title: title)
+  story = Story.create({title: title, user_id: user_id})
   redirect "/stories/#{story.id}"
 end
 
@@ -19,11 +20,12 @@ get "/stories/delete_form" do
 end
 
 get "/stories/:id/edit" do # Story edit form
-  @story = Story.find(params["id"])
+  @story = Story.find(params[:id])
   erb :"/stories/edit_form"
 end
 
 put "/stories/:id" do #Update a specific Stories
+  binding.pry
   story = Story.find(params[:id])
   story.update_attributes(title: params["title"])
   story.save
@@ -38,5 +40,10 @@ end
 
 get "/stories/:id" do # Find a specific Story
   @story = Story.find(params[:id])
+  @user = User.find(@story.user_id)
+  @user_stories = @user.stories
   erb :"/stories/show_story"
 end
+
+#/users/:user_id/stories
+#/users/:user_id/stories/new

@@ -8,4 +8,5 @@ class User < ActiveRecord::Base
       t.text :password
     end
   end
+  
 end

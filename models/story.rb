@@ -5,6 +5,7 @@ class Story < ActiveRecord::Base
   unless ActiveRecord::Base.connection.table_exists?(:stories)
     ActiveRecord::Base.connection.create_table :stories do |t|
       t.text :title
+      t.integer :user_id
     end
   end
   

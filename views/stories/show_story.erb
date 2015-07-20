@@ -1,2 +1,8 @@
-<%= @user.email %>
-<%= @user.password %>
+Just added or selected "<%= @story.title %>"
+<br> <br>
+List of all stories associated with <strong><%=@user.email%></strong>!
+<ul>
+<% @user_stories.each do |i| %>
+<li> <%= i.title %> </li>
+<% end %>
+</ul>
