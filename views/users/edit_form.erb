@@ -1,5 +1,6 @@
-<form action=" ">
+<form action="/users/id" method="post">
   <input type="hidden" name="method" value="put">
   <input type="text" name="email" value="<%= @user.email %>">
   <input type="submit" value="edit email">
+  <input type="hidden" name="id" value="<%= @user.id %>">
 </form>
