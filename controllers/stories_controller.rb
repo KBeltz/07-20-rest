@@ -9,10 +9,10 @@ post "/stories/create" do # Create a Story
   redirect "/stories/#{story.id}"
 end
 
-get "/stories" do # Show all Stories
-  @array_of_stories = Story.all
-  erb :"/stories/all_stories"
-end
+# get "/stories" do # Show all Stories
+#   @array_of_stories = Story.all
+#   erb :"/stories/all_stories"
+# end
 
 get "/stories/delete_form" do
   @array_of_stories = Story.all
