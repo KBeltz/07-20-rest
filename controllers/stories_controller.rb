@@ -11,23 +11,18 @@ post "/users/:user_id/stories" do # Create a Story
 end
 
 get "/users/:user_id/stories/:id/edit" do # Story edit form
+  @user = User.find(params[:user_id])
   @story = Story.find(params[:id])
   erb :"/stories/edit_form"
 end
 
-###########################################################################
-# working ^^
-###########################################################################
-
 put "/users/:user_id/stories/:id" do #Update a specific Story
   @user = User.find(params[:user_id])
   @story = Story.find(params[:id])
-  story.update_attributes(title: params["title"])
+  @story.update_attributes(title: params["title"])
   @story.save
   erb :"/stories/success"
 end
-
-###########################################################################
 
 post "/users/:user_id/stories/:id" do # Delete a specific Story
   story = Story.find(params["story_id"])
