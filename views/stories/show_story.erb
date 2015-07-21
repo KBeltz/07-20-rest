@@ -12,9 +12,17 @@ Select a story to edit.
 
 <% end %>
 <hr>
+Create another Story:
+<br><br>
+<form action="/users/<%= @user.id %>/stories/new">
+  <input type="hidden" name="user_id" value="<%= @user.id %>">
+  <input type="submit" value="Create Story">
+</form>
+<hr>
 Select a Story to Delete:
 
 <form action="/users/<%= @user.id %>/stories/story_id" method="post">
+  <input type="hidden" name="_method" value="delete">
   <select name="story_id">
     <option selected></option>
     <% @user_stories.each do |i| %>

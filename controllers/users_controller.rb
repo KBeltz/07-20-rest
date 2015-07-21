@@ -39,6 +39,5 @@ end
 
 get "/users/:id" do # Find a specific User
   @user = User.find(params[:id])
-  binding.pry
   erb :"/users/show_user"
 end
