@@ -1,11 +1,3 @@
-def current_user
-  if session[:user_id]
-    @current_user = User.find(session[:user_id])
-  else
-    redirect "/"
-  end
-end
-
 get "/users/new" do # Bring up form to create User
   erb :"users/new"
 end
@@ -28,25 +20,13 @@ get "/users/delete_form" do
 end
 
 get "/users/:id/edit" do # User edit form
-  def current_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      redirect "/"
-    end
-  end
+  current_user
   @user = User.find(params["id"])
   erb :"/users/edit_form"
 end
 
 put "/users/:id" do #Update a specific User
-  def current_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      redirect "/"
-    end
-  end
+  current_user
   user = User.find(params[:id])
   user.update_attributes(email: params["email"])
   user.save
@@ -54,13 +34,7 @@ put "/users/:id" do #Update a specific User
 end
 
 delete "/users/:id" do # Delete a specific User
-  def current_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    else
-      redirect "/"
-    end
-  end
+  current_user
   user = User.find(params[:id])
   user.destroy
   erb :"/users/deleted"
