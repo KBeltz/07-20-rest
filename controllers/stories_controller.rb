@@ -6,11 +6,13 @@ end
 post "/users/:user_id/stories" do # Create a Story
   title = params["title"]
   story = Story.create({title: title, user_id: params["user_id"]})
-  user = User.find({:id => params["user_id"]})
-  binding.pry
+  user = User.find(params["user_id"])
   redirect "/users/#{user.id}/stories/#{story.id}"
 end
 
+###########################################################################
+# working ^^
+###########################################################################
 get "/stories/delete_form" do
   @array_of_stories = Story.all
   erb :"/stories/delete_form"
