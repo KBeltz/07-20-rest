@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :stories
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :password, presence: true
 
   unless ActiveRecord::Base.connection.table_exists?(:users)
     ActiveRecord::Base.connection.create_table :users do |t|
@@ -8,5 +9,5 @@ class User < ActiveRecord::Base
       t.text :password
     end
   end
-  
+
 end
