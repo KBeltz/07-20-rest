@@ -1,8 +1,26 @@
 Just added or selected "<%= @story.title %>"
-<br> <br>
-List of all stories associated with <strong><%=@user.email%></strong>!
-<ul>
+<br>
+List of all stories associated with <strong><%= @user.email %></strong>!
+<br>
+Select a story to edit.
+
 <% @user_stories.each do |i| %>
-<li> <%= i.title %> </li>
-<% end %>
+
+<ul>
+  <a href="/users/<%= @user.id %>/stories/<%= @story.id %>/edit"><li> <%= i.title %> </li></a>
 </ul>
+
+<% end %>
+<hr>
+Select a Story to Delete:
+
+<form action="/users/<%= @user.id %>/stories/story_id" method="post">
+  <select name="story_id">
+    <option selected></option>
+    <% @user_stories.each do |i| %>
+    <option value="<%= i.id %>"><%= i.title %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Delete Story">
+</form>

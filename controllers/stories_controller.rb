@@ -13,10 +13,10 @@ end
 ###########################################################################
 # working ^^
 ###########################################################################
-get "/stories/delete_form" do
-  @array_of_stories = Story.all
-  erb :"/stories/delete_form"
-end
+# get "/stories/delete_form" do
+#   @array_of_stories = Story.all
+#   erb :"/stories/delete_form"
+# end
 
 get "/users/:user_id/stories/:id/edit" do # Story edit form
   @story = Story.find(params[:id])
@@ -36,7 +36,8 @@ post "/users/:user_id/stories/:id" do # Delete a specific Story
   erb :"/stories/deleted"
 end
 
-get "/users/:id/stories/:id" do # Find a specific Story
+###########################################################################
+get "/users/:user_id/stories/:id" do # Find a specific Story
   @story = Story.find(params[:id])
   @user = User.find(@story.user_id)
   @user_stories = @user.stories
