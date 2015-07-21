@@ -20,6 +20,7 @@ Choose a story to edit:
 <hr>
 Choose a story to delete:
 <form action="/users/<%= @user.id %>/stories/story_id" method="post">
+  <input type="hidden" name="_method" value="delete">
   <select name="story_id">
     <option selected></option>
     <% @user_stories.each do |i| %>
@@ -32,5 +33,6 @@ Choose a story to delete:
 
 Delete User?
 <form action="/users/<%= @user.id %>" method="post">
+  <input type="hidden" name="_method" value="delete">
   <input type="submit" value="Confirm">
 </form>

@@ -24,7 +24,7 @@ put "/users/:user_id/stories/:id" do #Update a specific Story
   erb :"/stories/success"
 end
 
-post "/users/:user_id/stories/:id" do # Delete a specific Story
+delete "/users/:user_id/stories/:id" do # Delete a specific Story
   story = Story.find(params["story_id"])
   story.destroy
   erb :"/stories/deleted"

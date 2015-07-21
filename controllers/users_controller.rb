@@ -2,7 +2,7 @@ get "/users/new" do # Bring up form to create User
   erb :"users/new"
 end
 
-post "/users/create" do # Create a User
+post "/users" do # Create a User
   email = params["email"]
   password = BCrypt::Password.create(params["password"])
   user = User.create({email: email, password: password})
@@ -31,7 +31,7 @@ put "/users/:id" do #Update a specific User
   erb :"/users/success"
 end
 
-post "/users/:id" do # Delete a specific User
+delete "/users/:id" do # Delete a specific User
   user = User.find(params[:id])
   user.destroy
   erb :"/users/deleted"
