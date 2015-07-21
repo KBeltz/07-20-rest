@@ -32,7 +32,7 @@ put "/users/:id" do #Update a specific User
 end
 
 post "/users/:id" do # Delete a specific User
-  user = User.find(params["user_id"])
+  user = User.find(params[:id])
   user.destroy
   erb :"/users/deleted"
 end
