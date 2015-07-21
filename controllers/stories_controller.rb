@@ -1,18 +1,15 @@
 get "/users/:user_id/stories/new" do # Bring up form to create Story
-  erb :"stories/new"
+  @user = User.find(params[:user_id])
+  erb :"/stories/new"
 end
 
 post "/users/:user_id/stories" do # Create a Story
-  user_id = User.where(:email => params["user_email"])[0].id
   title = params["title"]
-  story = Story.create({title: title, user_id: user_id})
-  redirect "/stories/#{story.id}"
+  story = Story.create({title: title, user_id: params["user_id"]})
+  user = User.find({:id => params["user_id"]})
+  binding.pry
+  redirect "/users/#{user.id}/stories/#{story.id}"
 end
-
-# get "/stories" do # Show all Stories
-#   @array_of_stories = Story.all
-#   erb :"/stories/all_stories"
-# end
 
 get "/stories/delete_form" do
   @array_of_stories = Story.all

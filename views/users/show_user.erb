@@ -1,2 +1,5 @@
-<%= @user.email %>
-<%= @user.password %>
+<%= @user.email %> profile
+<form action="/users/<%= @user.id %>/stories/new">
+  <input type="hidden" name="user_id" value="<%= @user.id %>">
+  <input type="submit" value="Create Story">
+</form>
