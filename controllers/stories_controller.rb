@@ -25,7 +25,7 @@ put "/users/:user_id/stories/:id" do #Update a specific Story
 end
 
 delete "/users/:user_id/stories/:id" do # Delete a specific Story
-  story = Story.find(params["story_id"])
+  story = Story.find(params[:id])
   story.destroy
   erb :"/stories/deleted"
 end
