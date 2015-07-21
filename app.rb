@@ -36,3 +36,4 @@ require_relative "models/story.rb"
 #Controllers
 require_relative "controllers/users_controller.rb"
 require_relative "controllers/stories_controller.rb"
+require_relative "controllers/main_controller.rb"
