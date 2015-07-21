@@ -1,5 +1,31 @@
 <%= @user.email %> profile
+<br><br>
 <form action="/users/<%= @user.id %>/stories/new">
   <input type="hidden" name="user_id" value="<%= @user.id %>">
   <input type="submit" value="Create Story">
+</form>
+
+<form action="/users/<%= @user.id %>/edit">
+  <input type="hidden" name="user_id" value="<%= @user.id %>">
+  <input type="submit" value="Update Profile">
+</form>
+<hr>
+Choose a story to edit:
+<% @user_stories = @user.stories %>
+<% @user_stories.each do |i| %>
+  <ul>
+    <li><a href="/users/<%= @user.id %>/stories/<%= i.id %>/edit"><%= i.title %></a></li>
+  </ul>
+<% end %>
+<hr>
+Choose a story to delete:
+<form action="/users/<%= @user.id %>/stories/story_id" method="post">
+  <select name="story_id">
+    <option selected></option>
+    <% @user_stories.each do |i| %>
+    <option value="<%= i.id %>"><%= i.title %></option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Delete Story">
 </form>
